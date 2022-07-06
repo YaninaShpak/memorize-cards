@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.App {
+  
+}
+
+.cards-title {
+  text-align: center;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.cardsList {
+  display: grid;
+  grid-template-columns: repeat(4, 270px);
+  gap: 40px;
+  
+  list-style: none;
+}
+
