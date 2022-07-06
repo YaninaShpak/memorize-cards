@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../UI/button/Button';
 
-const Card = ({card, remove}) => {
+const Card = ({ card, remove}) => {
+  const [rotateCard, setRotateCard] = useState(false);
+
+  const rotate = () => {
+    if (!rotateCard) {
+      setRotateCard(true);
+    } else {
+      setRotateCard(false);
+    }
+    
+  }
+
   return (
-    <li className='card'>
+    <li onClick={rotate} className={`card ${rotateCard ? 'rotate' : ''}`}>
       <div className='card__front'>
         <div className='card__info'>
           <h3 className="card__title">{card.title}</h3>
