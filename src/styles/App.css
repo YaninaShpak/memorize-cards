@@ -3,10 +3,6 @@
   padding: 0;
 }
 
-.App {
-  
-}
-
 .cards-title {
   text-align: center;
 }
@@ -23,5 +19,6 @@
   gap: 40px;
   
   list-style: none;
+  perspective: 1000px;
 }
 
