@@ -3,7 +3,7 @@ import cl from './Select.module.css';
 
 const Select = ({options, defaultValue, value, onChange}) => {
   return (
-    <select
+    <select className={cl.selectCard}
       value={value}
       onChange={e => onChange(e.target.value)}
     >
