@@ -1,16 +1,14 @@
 import React from 'react';
-import Button from '../UI/button/Button';
 import CardInput from '../UI/input/CardInput';
 import Select from '../UI/select/Select';
 
 const CardFilter = ({filter, setFilter}) => {
   return (
-    <div>
+    <div className='cardFilterWrapper'>
       <CardInput
         value={filter.query}
         onChange={e => setFilter({...filter, query: e.target.value })}
         placeholder='Поиск...' />
-      <Button>Создать карточку</Button>
       <div>
         <Select
           value={filter.sort}

@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .cards-title {
@@ -15,10 +16,22 @@
 
 .cardsList {
   display: grid;
-  grid-template-columns: repeat(4, 270px);
+  grid-template-columns: repeat(4, 1fr);
+  
   gap: 40px;
   
   list-style: none;
   perspective: 1000px;
 }
 
+.cardFilterWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cardFilterWrapper input {
+  width: 260px;
+  margin-right: 10px;
+}

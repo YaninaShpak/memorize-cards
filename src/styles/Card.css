@@ -1,8 +1,6 @@
 .card {
   position: relative;
 
-  width: 250px;
-
   cursor: pointer;
 
   transition: all 1s linear;
