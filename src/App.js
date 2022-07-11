@@ -7,6 +7,7 @@ import './styles/App.css';
 import './styles/Card.css';
 import Button from './UI/button/Button';
 import CardInput from './UI/input/CardInput';
+import Modal from './UI/modal/Modal';
 import Select from './UI/select/Select';
 
 function App() {
@@ -34,9 +35,11 @@ function App() {
   ]);
 
   const [filter, setFilter] = useState({ sort: '', query: '' });
+  const [modal, setModal] = useState(false);
 
   const createCard = (newCard) => {
     setCards([...cards, newCard]);
+    setModal(false);
   };
 
   const removeCard = (card) => {
@@ -56,6 +59,8 @@ function App() {
     return sortedCards.filter(card => card.title.toLowerCase().includes(filter.query.toLowerCase()));
   }, [filter.query, sortedCards]);
 
+  
+
   return (
     <div className="App">
       <h1 className='cards-title'>Карточки для запоминания</h1>
@@ -64,7 +69,14 @@ function App() {
       <div className='container'>
         <section className='newCards'>
           <h2>Новые</h2>
-          <CardForm create={createCard } />
+          <Button onClick={() => setModal(true)}>Создать карточку</Button>
+          <Modal
+            visible={modal}
+            setVisible={setModal}
+          >
+            <CardForm create={createCard } />
+          </Modal>
+          
           <CardFilter
             filter={filter}
             setFilter={setFilter}
