@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { useState } from 'react';
+import CardFilter from './components/CardFilter';
 import CardForm from './components/CardForm';
 import CardsList from './components/CardsList';
 import './styles/App.css';
@@ -32,8 +33,7 @@ function App() {
     }
   ]);
 
-  const [selectedSort, setSelectedSort] = useState('');
-  const [searchQuery, setSearchQuery]  = useState('');
+  const [filter, setFilter] = useState({ sort: '', query: '' });
 
   const createCard = (newCard) => {
     setCards([...cards, newCard]);
@@ -45,21 +45,16 @@ function App() {
 
 
   const sortedCards = useMemo(() => {
-    if (selectedSort) {
-      return [...cards].sort((a, b) => a[selectedSort].localeCompare(b[selectedSort]));
+    if (filter.sort) {
+      return [...cards].sort((a, b) => a[filter.sort].localeCompare(b[filter.sort]));
     }
 
     return cards;
-  }, [selectedSort, cards]);
+  }, [filter.sort, cards]);
 
   const sortedAndSearchedCards = useMemo(() => {
-    return sortedCards.filter(card => card.title.toLowerCase().includes(searchQuery.toLowerCase()));
-  }, [searchQuery, sortedCards])
-
-  const sortCards = (sort) => {
-    setSelectedSort(sort);
-    setCards([...cards].sort((a, b) => a[sort].localeCompare(b[sort])))
-  }
+    return sortedCards.filter(card => card.title.toLowerCase().includes(filter.query.toLowerCase()));
+  }, [filter.query, sortedCards]);
 
   return (
     <div className="App">
@@ -70,29 +65,14 @@ function App() {
         <section className='newCards'>
           <h2>Новые</h2>
           <CardForm create={createCard } />
-          
-          <CardInput
-            value={searchQuery}
-            onChange={e => setSearchQuery(e.target.value)}
-            placeholder='Поиск...' />
-          <Button>Создать карточку</Button>
-          <div>
-            <Select
-              value={selectedSort}
-              onChange={sortCards}
-              options={[
-              { value: 'title', name: 'По термину' },
-              { value: 'body', name: 'По определению' },
-            ]} defaultValue='Сортировка...'/>
-          </div>
-          {sortedAndSearchedCards.length !== 0
-            ? <CardsList
-                cards={sortedAndSearchedCards}
-                remove={removeCard}
-              />
-            : <h2>Карточки не найдены</h2>
-          }
-          
+          <CardFilter
+            filter={filter}
+            setFilter={setFilter}
+          />
+          <CardsList
+            cards={sortedAndSearchedCards}
+            remove={removeCard}
+          />
         </section>
         <section>
           <h2>На изучении</h2>
@@ -102,7 +82,6 @@ function App() {
           
         </section>
       </div>
-      
     </div>
   );
 }
