@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/memorize-cards/static/css/main.2f4ff075.css",
+    "main.js": "/memorize-cards/static/js/main.20fbffd1.js",
+    "static/media/color4202.png": "/memorize-cards/static/media/color4202.f48244b9f804d3c51666.png",
+    "index.html": "/memorize-cards/index.html",
+    "main.2f4ff075.css.map": "/memorize-cards/static/css/main.2f4ff075.css.map",
+    "main.20fbffd1.js.map": "/memorize-cards/static/js/main.20fbffd1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2f4ff075.css",
+    "static/js/main.20fbffd1.js"
+  ]
+}
