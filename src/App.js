@@ -6,9 +6,8 @@ import CardsList from './components/CardsList';
 import './styles/App.css';
 import './styles/Card.css';
 import Button from './UI/button/Button';
-import CardInput from './UI/input/CardInput';
 import Modal from './UI/modal/Modal';
-import Select from './UI/select/Select';
+
 
 function App() {
   const [cards, setCards] = useState([
